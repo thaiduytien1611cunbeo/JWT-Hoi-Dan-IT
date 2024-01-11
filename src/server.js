@@ -9,6 +9,16 @@ const HOST = process.env.HOST || "http://localhost:";
 
 configViewEngine(app);
 
+// Cấu hình đọc body từ Request
+// Đọc body ở dạng application/x-www-urlencoded
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+// Đọc body ở dạng application//json
+app.use(express.json());
+
 initWebRoutes(app);
 
 app.listen(PORT, () => {
