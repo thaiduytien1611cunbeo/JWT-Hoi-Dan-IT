@@ -12,10 +12,10 @@ const handleUserPage = async (req, res) => {
   });
 };
 
-const handleCreateNewUser = (req, res) => {
+const handleCreateNewUser = async (req, res) => {
   let { email, password, username } = req.body;
 
-  useService.createNewUser(email, password, username);
+  await useService.createNewUser(email, password, username);
 
   return res.redirect("/user");
 };
@@ -31,9 +31,7 @@ const getUpdateUserPage = async (req, res) => {
   const id = req.params.id;
   const user = await useService.updateUser(id);
   let userUpdate = {};
-  if (user && user.length > 0) {
-    userUpdate = user[0];
-  }
+  userUpdate = user;
   return res.render("user-update.ejs", { userUpdate });
 };
 
