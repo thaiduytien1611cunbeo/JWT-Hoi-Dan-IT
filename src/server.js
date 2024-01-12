@@ -1,6 +1,7 @@
 import express from "express";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
+// import connection from "./config/connectDB";
 require("dotenv").config();
 
 const app = express();
@@ -18,6 +19,9 @@ app.use(
 );
 // Đọc body ở dạng application//json
 app.use(express.json());
+
+// test connection DB
+// connection();
 
 initWebRoutes(app);
 
